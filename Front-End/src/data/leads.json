@@ -1,0 +1,4 @@
+[
+  { "id": 1, "name": "Alice Silva", "company": "Acme Corp", "email": "alice@acme.com", "source": "Website", "score": 88, "status": "New" },
+  { "id": 2, "name": "Bruno Lima", "company": "Beta Ltda", "email": "bruno@beta.com", "source": "Referral", "score": 72, "status": "Contacted" }
+]
