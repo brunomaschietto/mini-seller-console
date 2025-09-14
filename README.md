@@ -48,7 +48,7 @@ Finally, I refined the UX to ensure it works well on both desktop and mobile.
 ```bash
 git clone https://github.com/brunomaschietto/mini-seller-console
 
-cd Front-End
+cd mini-seller-console
 
 npm install
 
