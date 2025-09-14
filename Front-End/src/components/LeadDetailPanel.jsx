@@ -5,13 +5,19 @@ export default function LeadDetailPanel({ lead, onClose, onSave, onConvert }) {
   const [status, setStatus] = useState(lead.status);
   const [amount, setAmount] = useState("");
 
+  const [saving, setSaving] = useState(false);
+
   const handleSave = () => {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       alert("Invalid email format");
       return;
     }
+    setSaving(true);
     onSave(lead.id, { email, status });
-    onClose();
+    setTimeout(() => {
+      setSaving(false);
+      onClose();
+    }, 1200);
   };
 
   const handleConvert = () => {
@@ -63,9 +69,12 @@ export default function LeadDetailPanel({ lead, onClose, onSave, onConvert }) {
         <div className="mt-auto flex flex-col sm:flex-row gap-2">
           <button
             onClick={handleSave}
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full sm:w-auto"
+            disabled={saving}
+            className={`${
+              saving ? "bg-blue-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
+            } text-white px-4 py-2 rounded w-full sm:w-auto`}
           >
-            Save
+            {saving ? "Saving..." : "Save"}
           </button>
           <button
             onClick={onClose}

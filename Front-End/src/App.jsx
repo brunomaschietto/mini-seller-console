@@ -17,17 +17,29 @@ export default function App() {
 
   useEffect(() => {
     setTimeout(() => {
-      import("./data/leads.json")
-        .then((data) => {
-          setLeads(data.default);
-          setLoading(false);
-        })
-        .catch(() => {
-          setError("Failed to load leads.");
-          setLoading(false);
-        });
+      const storedLeads = localStorage.getItem("leads");
+      if (storedLeads) {
+        setLeads(JSON.parse(storedLeads));
+        setLoading(false);
+      } else {
+        import("./data/leads.json")
+          .then((data) => {
+            setLeads(data.default);
+            setLoading(false);
+          })
+          .catch(() => {
+            setError("Failed to load leads.");
+            setLoading(false);
+          });
+      }
     }, 800);
   }, []);
+
+  useEffect(() => {
+    if (leads.length > 0) {
+      localStorage.setItem("leads", JSON.stringify(leads));
+    }
+  }, [leads]);
 
   useEffect(() => {
     localStorage.setItem("search", search);
@@ -46,9 +58,25 @@ export default function App() {
     .filter((l) => (statusFilter ? l.status === statusFilter : true))
     .sort((a, b) => b.score - a.score);
 
-  const updateLead = (id, changes) => {
-    setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, ...changes } : l)));
-  };
+    const updateLead = (id, changes) => {
+      setLeads((prev) => {
+        const previous = prev.find((l) => l.id === id);
+        const updated = prev.map((l) => (l.id === id ? { ...l, ...changes } : l));
+    
+        setTimeout(() => {
+          const success = Math.random() > 0.2;
+          if (!success) {
+            alert("Failed to save. Reverting changes.");
+            setLeads((latest) =>
+              latest.map((l) => (l.id === id ? previous : l))
+            );
+          }
+        }, 1000);
+    
+        return updated;
+      });
+    };
+    
 
   const convertLead = (lead) => {
     const newOpp = {

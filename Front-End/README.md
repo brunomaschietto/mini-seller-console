@@ -1,12 +1,69 @@
-# React + Vite
+# **Mini Seller Console**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The **Mini Seller Console** is a lightweight CRM-style tool designed to help triage leads and quickly convert them into opportunities. It provides a simple interface where users can view, search, filter, and update leads, as well as create and manage opportunities without needing a backend service.  
 
-Currently, two official plugins are available:
+The project loads its data from a local JSON file and simulates API calls with `setTimeout`, making it feel closer to a real-world app experience.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🔍 **Table of Contents**
+* [Features](#-features)  
+* [Demo](#-demo)  
+* [Development Process](#-development-process)  
+* [How to Run](#-how-to-run)  
+* [Technologies](#-technologies)  
+* [Author](#-author)  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 💻 **Features**
+- [x] Lead management: view, search, filter, and sort leads  
+- [x] Detail side panel with inline editing (status + email with validation)  
+- [x] Convert leads into opportunities with stage and optional amount  
+- [x] Local persistence for filters and leads using `localStorage`  
+- [x] Loading, empty, and error states  
+- [x] Optimistic updates with rollback on simulated failure  
+- [x] Responsive layout (desktop → mobile)  
+
+---
+
+## 🎯 **Demo**
+Coming soon... (can be hosted on Netlify, Vercel, or GitHub Pages).  
+
+---
+
+## 👨🏻‍💻 **Development Process**
+I started by setting up the project with **React + Vite** and **Tailwind CSS** for quick styling.  
+
+The first step was building the lead list table with search, filter, and sort options. Then I added the side panel for lead details, including inline editing with validation.  
+
+After that, I implemented the "Convert Lead" feature to generate opportunities, displayed in their own table. To make the app feel more realistic, I added optimistic updates with rollback logic and persisted state with `localStorage`.  
+
+Finally, I refined the UX to ensure it works well on both desktop and mobile.  
+
+---
+
+## 🕹 **How to Run**
+
+```bash
+git clone https://github.com/brunomaschietto/mini-seller-console
+
+cd Front-End
+
+npm install
+
+npm run dev
+
+```
+
+## ⚙️ **Technologies**
+
+1. [React](https://pt-br.reactjs.org/)
+2. [Vite](https://vite.dev/)
+3. [Tailwind CSS](https://tailwindcss.com/)
+
+## 👩🏻‍💻 **Author**
+
+<p>Bruno Maschietto Simões Cruz</p>
+
+[LinkedIn](https://www.linkedin.com/in/bruno-maschietto/)
