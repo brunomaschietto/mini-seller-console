@@ -28,7 +28,7 @@ The project loads its data from a local JSON file and simulates API calls with `
 ---
 
 ## 🎯 **Demo**
-Coming soon... (can be hosted on Netlify, Vercel, or GitHub Pages).  
+[Deploy](https://mini-seller-console-beta.vercel.app/)
 
 ---
 
